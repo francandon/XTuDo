@@ -1,7 +1,7 @@
 site_name: XTuDo Docs
 site_description: Tutorials for X-ray missing-data & spectral analysis
 site_url: https://francandon.github.io/XTuDo
-repo_url: https://github.com/francandon/XTuDo
+repo_url:  https://github.com/francandon/XTuDo
 repo_name: XTuDo
 edit_uri: edit/main/docs/
 
@@ -80,7 +80,7 @@ nav:
       - Export figures: how-to/export-figures.md
   - Reference:
       - TuDoXrays API: reference/tu_do_xrays.md
-      
+
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
