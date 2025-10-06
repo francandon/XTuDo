@@ -1,0 +1,24 @@
+/* --- Make the logo bigger --- */
+.md-header__button.md-logo img {
+  height: 2.4rem; /* default ~1.8rem */
+  width: auto;
+}
+
+/* --- Make the site title in the header larger and bolder --- */
+.md-header__title {
+  font-size: 1.25rem;  /* increase title size */
+  font-weight: 700;    /* make it bold */
+  color: #082440;      /* optional: dark teal tone */
+}
+
+/* Optional: if you want more spacing between logo and title */
+.md-header__title {
+  margin-left: 0.5rem;
+}
+
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

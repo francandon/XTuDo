@@ -1,0 +1,91 @@
+site_name: XTuDo Docs
+site_description: Tutorials for X-ray missing-data & spectral analysis
+site_url: https://francandon.github.io/XTuDo
+repo_url: https://github.com/francandon/XTuDo
+repo_name: XTuDo
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  logo: assets/images/logo.svg
+  favicon: assets/images/logo.svg
+  palette:
+    - scheme: default
+      primary: white     # ← change this
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.expand
+    - content.code.copy
+    - search.highlight
+    - toc.integrate
+    - content.action.edit
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: numpy
+            show_source: false
+  - mkdocs-jupyter:
+      execute: false
+  - awesome-pages
+  - git-revision-date-localized:
+      fallback_to_build_date: true
+
+markdown_extensions:
+  - admonition
+  - def_list
+  - attr_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - NuSTAR : 
+    - Overview: NuSTAR/overview.md
+    - Data archive : NuSTAR/data_archive.md
+  - Tutorials:
+      - Spectral analysis:
+          - Overview: tutorials/spectral-analysis/overview.md
+          - XSPEC workflow: tutorials/spectral-analysis/xspec-workflow.md
+          - Python workflow (notebook): tutorials/spectral-analysis/python-workflow.ipynb
+  - How-to guides:
+      - Install toolkit: how-to/install-toolkit.md
+      - Export figures: how-to/export-figures.md
+  - Reference:
+      - TuDoXrays API: reference/tu_do_xrays.md
+      
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - assets/stylesheets/custom.css
+
+
