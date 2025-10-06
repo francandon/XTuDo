@@ -1,35 +1,68 @@
-name: Deploy MkDocs site to GitHub Pages
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
     branches: [ main ]
 
 permissions:
-  contents: write   # <-- needed for gh-pages push
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.11'
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install mkdocs-material mkdocstrings[python] mkdocs-jupyter \
                       mkdocs-awesome-pages-plugin mkdocs-git-revision-date-localized-plugin
 
-      - name: Build
+      # ⬇️ Add this block here
+      - name: Normalize notebooks (add missing cell ids)
+        run: |
+          python - <<'PY'
+          import nbformat, pathlib, uuid
+          def ensure_ids(nb):
+            changed = False
+            for cell in nb.cells:
+              if 'id' not in cell:
+                cell['id'] = uuid.uuid4().hex[:8]
+                changed = True
+            return changed
+          for p in pathlib.Path("docs").rglob("*.ipynb"):
+            nb = nbformat.read(p, as_version=4)
+            if ensure_ids(nb):
+              nbformat.write(nb, p)
+              print("Normalized:", p)
+            else:
+              print("OK (already has ids):", p)
+          PY
+      # ⬆️ END of added block
+
+      - name: Build site
         run: mkdocs build --strict
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          enable_jekyll: false
+          path: ./site
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
