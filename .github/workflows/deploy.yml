@@ -2,41 +2,34 @@ name: Deploy MkDocs site to GitHub Pages
 
 on:
   push:
-    branches:
-      - main  # or 'master' if that's your default branch
+    branches: [ main ]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+  contents: write   # <-- needed for gh-pages push
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.x
+          python-version: '3.x'
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
+          pip install --upgrade pip
           pip install mkdocs-material mkdocstrings[python] mkdocs-jupyter \
-                     mkdocs-awesome-pages-plugin mkdocs-git-revision-date-localized-plugin
+                      mkdocs-awesome-pages-plugin mkdocs-git-revision-date-localized-plugin
 
-      - name: Build and deploy
+      - name: Build
+        run: mkdocs build --strict
+
+      - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
           enable_jekyll: false
 
-      - name: Build MkDocs
-        run: mkdocs build
