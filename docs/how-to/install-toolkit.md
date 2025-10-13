@@ -1,3 +1,0 @@
-# Install toolkit
-
-Coming soon.
