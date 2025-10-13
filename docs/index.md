@@ -26,10 +26,6 @@ Welcome! This site provides tutorials and documentation for analyzing and proces
 [XSPEC workflow](tutorials/spectral-analysis/xspec-workflow.md)  
 [Python workflow (notebook)](tutorials/spectral-analysis/python-workflow.ipynb)
 
-**How-to guides**  
-[Install toolkit](how-to/install-toolkit.md)  
-[Export figures](how-to/export-figures.md)
-
 **Reference**  
 [XTuDo API (auto-docs)](reference/tu_do_xrays.md)
 
