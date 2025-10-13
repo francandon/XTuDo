@@ -9,45 +9,60 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # needed for git-revision-date-localized-plugin
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs-material mkdocstrings[python] mkdocs-jupyter \
-                      mkdocs-awesome-pages-plugin mkdocs-git-revision-date-localized-plugin
+          pip install \
+            mkdocs-material \
+            mkdocstrings[python] \
+            mkdocs-jupyter \
+            mkdocs-awesome-pages-plugin \
+            mkdocs-git-revision-date-localized-plugin \
+            nbformat>=5.1.4
 
-      # ⬇️ Add this block here
       - name: Normalize notebooks (add missing cell ids)
         run: |
           python - <<'PY'
-          import nbformat, pathlib, uuid
+          import nbformat, pathlib, uuid, sys
+          changed_any = False
           def ensure_ids(nb):
-            changed = False
-            for cell in nb.cells:
-              if 'id' not in cell:
-                cell['id'] = uuid.uuid4().hex[:8]
-                changed = True
-            return changed
+              changed = False
+              for cell in nb.cells:
+                  # add an id if missing
+                  if not getattr(cell, "id", None):
+                      cell.id = uuid.uuid4().hex[:8]
+                      changed = True
+              return changed
           for p in pathlib.Path("docs").rglob("*.ipynb"):
-            nb = nbformat.read(p, as_version=4)
-            if ensure_ids(nb):
-              nbformat.write(nb, p)
-              print("Normalized:", p)
-            else:
-              print("OK (already has ids):", p)
+              nb = nbformat.read(p, as_version=4)
+              if ensure_ids(nb):
+                  # validate after assigning ids (silences MissingIDFieldWarning)
+                  nbformat.validate(nb)
+                  nbformat.write(nb, p)
+                  print("Normalized:", p)
+                  changed_any = True
+              else:
+                  print("OK (already has ids):", p)
+          sys.exit(0)
           PY
-      # ⬆️ END of added block
 
       - name: Build site
         run: mkdocs build --strict
