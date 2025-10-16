@@ -1,34 +1,21 @@
-# XTuDo Documentation
+<!-- Hero section with side-by-side text and logo -->
+<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
 
-Welcome! This site provides tutorials and documentation for analyzing and processing X-ray telescope data using the TU Dortmund cluster.
+  <!-- Left: Text -->
+  <div style="flex:1 1 360px; min-width:320px;">
+    <h1>XTuDo Documentation</h1>
+        <p>Welcome! This site provides tutorials and documentation for analyzing and processing <strong>X-ray telescope data using the TU Dortmund cluster</strong>.</p>
+    <p>
+      <a href="getting-started.md" class="md-button md-button--primary">Getting started</a>
+      <a href="NuSTAR/overview.md" class="md-button">NuSTAR</a>
+    </p>
+  </div>
 
-![XTuDo Logo](assets/images/logo.svg){.center-image width="30%"}
-
----
-## Quick start
-
-[Getting started](getting-started.md){ .md-button .md-button--primary }[NuSTAR overview](NuSTAR/overview.md){ .md-button } [Spectral tutorials](tutorials/spectral-analysis/xspec-workflow.md){ .md-button }
-
----
-
-## What’s inside
-
-## What’s inside
-
-**Getting started**  
-[Environment & local preview](getting-started.md)
-
-**NuSTAR**  
-[Overview](NuSTAR/overview.md)  
-[Data archive](NuSTAR/data_archive.md)
-
-**Tutorials → Spectral analysis**  
-[XSPEC workflow](tutorials/spectral-analysis/xspec-workflow.md)  
-[Python workflow (notebook)](tutorials/spectral-analysis/python-workflow.ipynb)
-
-**Reference**  
-[XTuDo API (auto-docs)](reference/tu_do_xrays.md)
-
+  <!-- Right: Logo -->
+  <div style="flex:1 1 360px; min-width:360px; text-align:center;">
+    <img src="assets/images/logo.svg" alt="XTuDo Logo" style="max-width:320px; width:100%; height:auto;" />
+  </div>
+</div>
 
 ---
 
