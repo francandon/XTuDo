@@ -6,8 +6,8 @@
     <h1>XTuDo Documentation</h1>
         <p>Welcome! This site provides tutorials and documentation for analyzing and processing <strong>X-ray telescope data using the TU Dortmund cluster</strong>.</p>
     <p>
-      <a href="getting-started.md" class="md-button md-button--primary">Getting started</a>
-      <a href="NuSTAR/overview.md" class="md-button">NuSTAR</a>
+      <a href="getting-started/" class="md-button md-button--primary">Getting started</a>
+      <a href="NuSTAR/overview/" class="md-button">NuSTAR</a>
     </p>
   </div>
 
