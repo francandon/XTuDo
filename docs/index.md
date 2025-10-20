@@ -3,12 +3,14 @@
 
   <!-- Left: Text -->
   <div style="flex:1 1 360px; min-width:320px;">
+
     # XTuDo Documentation
+
     Welcome! This site provides tutorials and documentation for analyzing and processing **X-ray telescope data using the TU Dortmund cluster**.
-  <p>
-    <a href="{{ 'getting-started/' | url }}" class="md-button md-button--primary">Getting started</a>
-    <a href="{{ 'NuSTAR/overview/' | url }}" class="md-button">NuSTAR</a>
-  </p>
+
+    [Getting started](getting-started/){ .md-button .md-button--primary }
+    [NuSTAR](NuSTAR/overview/){ .md-button }
+
   </div>
 
   <!-- Right: Logo -->
