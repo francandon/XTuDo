@@ -73,6 +73,8 @@ nav:
     - Overview: NuSTAR/overview.md
     - Data archive : NuSTAR/data_archive.md
     - Data analysis : NuSTAR/nustar_quickstart.md
+  - Utilities:
+    - DS9: utilities/ds9.md
   - Reference:
       - TuDoXrays API: reference/tu_do_xrays.md
 extra_javascript:

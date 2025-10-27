@@ -8,6 +8,7 @@
     <p>
       <a href="getting-started/" class="md-button md-button--primary">Getting started</a>
       <a href="NuSTAR/overview/" class="md-button">NuSTAR</a>
+      <a href="utilities/ds9/" class="md-button">Utilities</a>
     </p>
   </div>
 
