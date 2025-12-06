@@ -75,6 +75,11 @@ nav:
     - Data analysis : NuSTAR/nustar_quickstart.md
   - Utilities:
     - DS9: utilities/ds9.md
+  - MESA Astrophysics:
+    - Overview: MESA/overview.md
+    - Installation: MESA/installation.md
+    - Running MESA: MESA/running_mesa.md
+    - Analyzing MESA output: MESA/analyzing_output.md
   - Reference:
       - TuDoXrays API: reference/tu_do_xrays.md
 extra_javascript:
