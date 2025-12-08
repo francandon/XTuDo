@@ -30,14 +30,18 @@ Every time you want to work with MESA, do this first.
 2. Start XQuartz.
 3. Open Terminal and go to your MESA-Docker folder, for example:
 
+```bash
    cd ~/MESA-Docker
+```
 
 ### Linux
 
 1. Ensure Docker is running (for example, systemctl status docker).
 2. Open a terminal in your usual graphical session and go to your MESA-Docker folder:
 
+```bash
    cd ~/MESA-Docker
+```
 
 Adjust the paths if you cloned MESA-Docker somewhere else.
 
@@ -45,49 +49,11 @@ Adjust the paths if you cloned MESA-Docker somewhere else.
 
 ## 2. Starting the MESA-Docker Container
 
-In the MESA-Docker folder you will find scripts to start the container. Use the one matching your OS.
-
-### 2.1. macOS
-
-./mac_dockerMESA.sh
-
-On the first run:
-
-- Docker will download the MESA image (several GB).
-- SSH will warn about an unknown host. Type "yes" to continue.
-- When prompted for a password, enter:
-
-mesa
-
-If everything works, your prompt will change to something like:
-
-docker@mesa-container:~$
-
-This means you are now inside the container.
-
----
-
-### 2.2. Linux
-
-sudo ./linux_dockerMESA.sh
-
-On the first run:
-
-- Docker downloads and unpacks the MESA image.
-- SSH may ask you to confirm authenticity (type "yes").
-- Enter password mesa for the docker user.
-
-You should then see:
-
-docker@mesa-container:~$
-
----
-
-### 2.3. Windows 10 / 11 (with Docker Desktop)
-
 In Git Bash, inside MESA-Docker:
 
+```bash
 ./win_dockerMESA.sh
+```
 
 On the first run:
 
@@ -95,18 +61,19 @@ On the first run:
 - SSH will ask you to confirm the unknown host → type "yes".
 - When asked for a password, enter:
 
+```bash
 mesa
+```
 
 You might also see a prompt asking Docker for permission to access your hard drive. Allow it.
 
 Once you see:
 
+```bash
 docker@mesa-container:~$
+```
 
 you are inside the container.
-
-Note for Windows Home / older systems:
-Some older systems may need ./win_home_dockerMESA.sh instead, which sets up a virtual machine plus the Docker container. If you ever use this script, it may ask for two passwords the first time (tcuser for the VM and mesa for the container). For this course we will assume most students can use ./win_dockerMESA.sh.
 
 ---
 
@@ -114,12 +81,16 @@ Some older systems may need ./win_home_dockerMESA.sh instead, which sets up a vi
 
 Inside the container, run:
 
+```bash
 pwd
 ls
+```
 
 You should be in /home/docker. One of the listed directories will be:
 
+```bash
 docker_work
+```
 
 This directory is shared with your host computer:
 
@@ -146,11 +117,13 @@ Let’s verify that everything works by running a standard test project.
 
 Inside the container:
 
+```bash
 cd ~/docker_work
 cp -r $MESA_DIR/star/work tutorial
 cd tutorial
 ./mk
 ./rn
+```
 
 What this does:
 
@@ -177,7 +150,9 @@ If you do not see any windows:
 
 Once the run finishes (or even while it is running), inspect the contents of tutorial:
 
+```bash
 ls
+```
 
 You should see files such as:
 
@@ -211,10 +186,10 @@ Typical workflow:
    - Change a parameter (for example, the initial mass).
 
 2. Re-run the model inside the container
-
+```bash
    cd ~/docker_work/tutorial
    ./rn
-
+```
 You generally only need to re-run ./mk if you modify the Fortran source code. For changes in the inlist, ./rn is enough.
 
 By repeating this cycle:
@@ -234,7 +209,9 @@ When you’re done with your session:
 1. Close any pgstar windows (if needed).
 2. In the container shell, type:
 
+```bash
    exit
+```
 
 This ends the shell session and stops the container instance.
 
@@ -247,26 +224,15 @@ Important:
   - Go back to ~/docker_work inside the container.
 
 You can even restart from a saved model if the example provides restart options, for example:
-
+```bash
 cd ~/docker_work/tutorial
 ./re x200
-
+```
 (Details will depend on the particular test case.)
 
 ---
 
-## 8. Choosing a MESA Version (Optional)
-
-By default, the scripts start the latest supported MESA release in the Docker image. If you want a specific version (for reproducibility or to match a paper), many scripts support a -v option, for example:
-
-./win_dockerMESA.sh -v r24.03.1
-./mac_dockerMESA.sh -v 9793
-
-In this course you can simply use the default version unless told otherwise.
-
----
-
-## 9. Common Problems and Quick Fixes
+## 8. Common Problems and Quick Fixes
 
 ### No graphical windows
 
@@ -296,13 +262,3 @@ In this course you can simply use the default version unless told otherwise.
 If you are on macOS and Docker seems to keep a very large disk image even after pruning, Docker Desktop has a “Reset to factory defaults” option in its settings. Use it with care: it deletes all local images and containers.
 
 ---
-
-## 10. Next Steps
-
-Once you can:
-
-- Start the MESA container,
-- Run the tutorial example (./mk, ./rn),
-- Edit inlist_project and see changes in the plots and logs,
-
-you are ready to move on to the MESA exercises for this course (HR diagrams, lifetime vs. mass, internal structure, etc.).
