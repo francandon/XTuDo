@@ -66,7 +66,7 @@ After installation:
 
 ### 3.2. Install Git and Git Bash
 
-1. Download [Git](https://desktop.github.com/download/) (or also it should work GitHub Desktop) for Windows. 
+1. Download [Git Hub Desktop](https://desktop.github.com/download/) and [Git Bash](https://git-scm.com/install/) for Windows. 
 2. It will be not only important for the Docker installation but also to clone the seminar repository. 
 
 We will use Git Bash as our terminal on Windows.
@@ -88,11 +88,11 @@ In order to complete the installation you should follow the instructions at the 
 Now we get the actual scripts that run the MESA container.
 
 1. Open your terminal:
-    - Windows: Git Bash,
+    - Windows: Git Bash (by oppening the Git Bash application it should appear an interactive terminal),
     - macOS: Terminal,
     - Linux: your favorite terminal.
 
-2. Choose a location for your MESA work, for example your home directory:
+2. Choose a location for your MESA work inside the Git Bash terminal, for example your home directory:
 ```bash
    cd ~
 ```
