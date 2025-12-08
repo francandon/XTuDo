@@ -158,8 +158,8 @@ You should see files such as:
 
 - inlist_project — the main input file controlling this run.
 - LOGS/ — directory with output logs:
-  - history.data — time series of global quantities (L, R, Teff, etc.).
-  - profileNNN.data — internal structure at specific times or stages.
+    - history.data — time series of global quantities (L, R, Teff, etc.).
+    - profileNNN.data — internal structure at specific times or stages.
 - Possibly other directories created by pgstar (images, etc.).
 
 Because tutorial is inside ~/docker_work, you can open these files from your host OS:
@@ -182,8 +182,8 @@ tutorial/inlist_project
 Typical workflow:
 
 1. Edit inlist_project on your host OS  
-   - Open MESA-Docker/docker_work/tutorial/inlist_project in a text editor.
-   - Change a parameter (for example, the initial mass).
+    - Open MESA-Docker/docker_work/tutorial/inlist_project in a text editor.
+    - Change a parameter (for example, the initial mass).
 
 2. Re-run the model inside the container
 ```bash
@@ -219,9 +219,9 @@ Important:
 
 - All files in ~/docker_work remain on your machine.
 - Next time you want to work, just:
-  - Start Docker + X server (if needed),
-  - Run the appropriate script (./win_dockerMESA.sh, ./mac_dockerMESA.sh, or sudo ./linux_dockerMESA.sh),
-  - Go back to ~/docker_work inside the container.
+    - Start Docker + X server (if needed),
+    - Run the appropriate script (./win_dockerMESA.sh, ./mac_dockerMESA.sh, or sudo ./linux_dockerMESA.sh),
+    - Go back to ~/docker_work inside the container.
 
 You can even restart from a saved model if the example provides restart options, for example:
 ```bash
@@ -245,20 +245,21 @@ cd ~/docker_work/tutorial
 - Verify that MESA-Docker/docker_work exists on your host.
 - If files appear only inside the container and not on the host, there may have been an issue mounting the volume the first time.
 - In that case, you may need to:
-  - Stop all containers,
-  - Remove the MESA-Docker image,
-  - Re-run the start script to recreate everything cleanly.
+    - Stop all containers,
+    - Remove the MESA-Docker image,
+    - Re-run the start script to recreate everything cleanly.
 
 ### Disk space issues
 
 - Check Docker images:
-
+```bash
   docker images
+```
 
 - Remove unused images with:
-
+```bash
   docker rmi <image-id-or-name>
-
+```
 If you are on macOS and Docker seems to keep a very large disk image even after pruning, Docker Desktop has a “Reset to factory defaults” option in its settings. Use it with care: it deletes all local images and containers.
 
 ---

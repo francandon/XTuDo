@@ -8,6 +8,8 @@
 
 MESA is written mainly in Fortran and organized into self-contained *modules* (e.g. `star`, `binary`, `eos`, `kap`, `nuc`), which makes it flexible and extensible.
 
+You can acess the [MESA Documentation](https://docs.mesastar.org/en/latest/using_mesa/running.html), which explains everything that we are going to see in the course!!
+
 ---
 
 
@@ -16,22 +18,26 @@ MESA is written mainly in Fortran and organized into self-contained *modules* (e
 In this course you will mainly:
 
 1. **Run example problems** shipped with MESA:
-   - For example, a 1 M⊙ star evolving off the main sequence.
+    
+    - For example, a 1 M⊙ star evolving off the main sequence.
 
 2. **Modify inlists** (MESA input files):
-   - Change initial mass,
-   - Adjust metallicity,
-   - Tweak mixing and mass-loss parameters,
-   - Change when the model stops.
+
+    - Change initial mass,
+    - Adjust metallicity,
+    - Tweak mixing and mass-loss parameters,
+    - Change when the model stops.
 
 3. **Inspect MESA outputs**:
-   - Text logs in `LOGS/history.data` and `LOGS/profile*.data`,
-   - Plots from `pgstar` (HR diagrams, profiles, Kippenhahn diagrams, etc.).
+
+    - Text logs in `LOGS/history.data` and `LOGS/profile*.data`,
+    - Plots from `pgstar` (HR diagrams, profiles, Kippenhahn diagrams, etc.).
 
 4. **(Optionally) Build a small project**, such as:
-   - Comparing evolution at different metallicities,
-   - Studying the structure of massive stars at core collapse,
-   - Following the growth of a white dwarf toward thermonuclear ignition.
+
+    - Comparing evolution at different metallicities,
+    - Studying the structure of massive stars at core collapse,
+    - Following the growth of a white dwarf toward thermonuclear ignition.
 
 You *do not* need to modify the MESA source code itself for this course.
 
