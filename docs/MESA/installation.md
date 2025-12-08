@@ -56,7 +56,7 @@ To follow the course you need:
 
 ### 3.1. Install Docker Desktop
 
-1. Download Docker Desktop for Windows.
+1. Download [Docker Desktop](https://www.docker.com/products/docker-desktop/) for Windows.
 2. Run the installer, accept defaults.
 3. If asked, allow enabling WSL2 and restart the computer.
 
