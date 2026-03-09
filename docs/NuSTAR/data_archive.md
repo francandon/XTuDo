@@ -8,4 +8,4 @@ Type the sourrce name in **Object Name or Coordinates**, for example Sgr A*.
 NuSTAR. 
 
 
-Downloading them is as simple as clickling the white box for the observations you want to download
+Downloading them is as simple as clickling the white box for the observations you want to download.
