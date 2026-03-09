@@ -3,19 +3,6 @@
 !!! info "You’ll need"
     - **Access to the cluster** granted by one of the admins (ask @francandon).
     - **If you are working locally** on your own computer, you must install each telescope environment separately. More information can be found in each telescope’s section.
-    - **To modify or add content** to this documentation site, you’ll need:
-        - Conda (Miniforge or Mambaforge)
-        - Python 3.11
-        - JupyterLab *(optional, for running notebooks locally)*
-
-
-```bash
-conda env create -f environment.yml
-conda activate docs
-mkdocs serve   # To preview your changes locally
-```
-
-
 ---
 
 ## Accessing the Cluster
@@ -26,11 +13,40 @@ Once your account has been created, you can log in with:
 ssh interactive
 ```
 
-You’ll then be inside the cluster, in your home directory (`/home/user`).
-Activate the **XTuDo** environment by running:
+You’ll then be inside the cluster, in your home directory (`/home/user`). Now, you should modify the file .bashrc to initialize conda and the NuSTAR Caldb every time you enter the cluster. Copy and paste this into your .bashrc: 
 
 ```bash
-conda activate XTuDo
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniconda/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/miniconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# --- NuSTAR CALDB setup ---
+export CALDB=/ceph/users/fcandon/caldb
+export CALDBCONFIG=$CALDB/software/tools/caldb.config
+export CALDBALIAS=$CALDB/software/tools/alias_config.fits
+
+# Initialize CALDB helpers (sets CALDBPATH etc.) if available
+if [ -f "$CALDB/software/tools/caldbinit.sh" ]; then
+  . "$CALDB/software/tools/caldbinit.sh"
+fi
+```
+Now, close the terminal and open it again.
+
+Activate the NuSTAR enviroment **henv_forge** by running:
+
+```bash
+conda activate henv_forge
 ```
 
 Now you should be able to run all the commands discussed later in the tutorials.
